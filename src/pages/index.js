@@ -1,29 +1,70 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { Link, graphql } from "gatsby"
+import Img from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
+    {data.allNodeArticle.edges.map(edge => (
+      <>
+        <h3>
+          <Link to={edge.node.id}>{edge.node.title}</Link>
+        </h3>
+        <small>
+          <em>{Date(edge.node.created)}</em>
+        </small>
+        <div
+          style={{
+            maxWidth: `300px`,
+            marginBottom: `1.45rem`,
+            width: `100%`,
+          }}
+        >
+          <Img
+            fluid={
+              edge.node.relationships.field_image.localFile.childImageSharp
+                .fluid
+            }
+          />
+        </div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              edge.node.body.value.split(" ").splice(0, 50).join(" ") + "...",
+          }}
+        ></div>
+      </>
+    ))}
   </Layout>
 )
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    allNodeArticle {
+      edges {
+        node {
+          title
+          body {
+            value
+          }
+          created
+          relationships {
+            field_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 400, quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
