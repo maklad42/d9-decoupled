@@ -21,14 +21,7 @@ const IndexPage = ({ data }) => (
             marginBottom: `1.45rem`,
             width: `100%`,
           }}
-        >
-          <Img
-            fluid={
-              edge.node.relationships.field_image.localFile.childImageSharp
-                .fluid
-            }
-          />
-        </div>
+        ></div>
         <div
           dangerouslySetInnerHTML={{
             __html:
@@ -50,18 +43,6 @@ export const query = graphql`
           title
           body {
             value
-          }
-          created
-          relationships {
-            field_image {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 400, quality: 100) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
           }
         }
       }
