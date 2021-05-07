@@ -16,13 +16,6 @@ const IndexPage = ({ data }) => (
           <em>{Date(edge.node.created)}</em>
         </small>
         <div
-          style={{
-            maxWidth: `300px`,
-            marginBottom: `1.45rem`,
-            width: `100%`,
-          }}
-        ></div>
-        <div
           dangerouslySetInnerHTML={{
             __html:
               edge.node.body.value.split(" ").splice(0, 50).join(" ") + "...",
@@ -44,6 +37,7 @@ export const query = graphql`
           body {
             value
           }
+          created
         }
       }
     }
