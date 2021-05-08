@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import Img from "gatsby-plugin-image"
+import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -15,6 +15,10 @@ const IndexPage = ({ data }) => (
         <small>
           <em>{Date(edge.node.created)}</em>
         </small>
+        <StaticImage
+          src="http://dev.d9-sandbox.io/sites/default/files/2021-05/generateImage_vXQQFL.png"
+          alt="testpic"
+        />
         <div
           dangerouslySetInnerHTML={{
             __html:
@@ -38,6 +42,17 @@ export const query = graphql`
             value
           }
           created
+          relationships {
+            field_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 10, quality: 10) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

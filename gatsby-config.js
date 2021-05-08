@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gatsby and Drupal`,
+    description: `This site is simply a way to pull some data into a Gatsby site from Drupal. Going to start with some articles including text and images, and then move on to Division Gear Sets, and WE2021 players`,
+    author: `@maklad42`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -12,6 +12,12 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: `http://dev.d9-sandbox.io`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -32,11 +38,5 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-source-drupal`,
-      options: {
-        baseUrl: `http://dev.d9-sandbox.io`,
-      },
-    },
   ],
 }
