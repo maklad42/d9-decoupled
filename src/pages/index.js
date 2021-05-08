@@ -15,10 +15,18 @@ const IndexPage = ({ data }) => (
         <small>
           <em>{Date(edge.node.created)}</em>
         </small>
-        <StaticImage
-          src="http://dev.d9-sandbox.io/sites/default/files/2021-05/generateImage_vXQQFL.png"
-          alt="testpic"
-        />
+        <div
+          style={{
+            maxWidth: `300px`,
+            marginBottom: `1.45rem`,
+            width: `100%`,
+          }}
+        >
+          <StaticImage
+            src="http://dev.d9-sandbox.io/sites/default/files/2021-05/generateImage_vXQQFL.png"
+            alt="testpic"
+          />
+        </div>
         <div
           dangerouslySetInnerHTML={{
             __html:
