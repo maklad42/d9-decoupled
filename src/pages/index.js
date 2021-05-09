@@ -1,9 +1,9 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+// import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -22,10 +22,14 @@ const IndexPage = ({ data }) => (
             width: `100%`,
           }}
         >
-          <StaticImage
+          <GatsbyImage
+            image={edge.node.relationships.field_image.localFile}
+            alt="testpic alt text"
+          />
+          {/* <StaticImage
             src="http://dev.d9-sandbox.io/sites/default/files/2021-05/generateImage_vXQQFL.png"
             alt="testpic"
-          />
+          /> */}
         </div>
         <div
           dangerouslySetInnerHTML={{
@@ -54,9 +58,11 @@ export const query = graphql`
             field_image {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 10, quality: 10) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(
+                    width: 200
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
                 }
               }
             }
