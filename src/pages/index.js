@@ -22,6 +22,7 @@ const IndexPage = ({ data }) => (
             width: `100%`,
           }}
         >
+          {console.log(edge.node.relationships.field_image)}
           <GatsbyImage
             image={edge.node.relationships.field_image.localFile}
             alt="testpic alt text"
@@ -50,6 +51,7 @@ export const query = graphql`
       edges {
         node {
           title
+          id
           body {
             value
           }
