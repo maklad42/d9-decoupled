@@ -22,7 +22,7 @@ const IndexPage = ({ data }) => (
             width: `100%`,
           }}
         >
-          {console.log(edge.node.relationships.field_image)}
+          {console.log(edge.node.relationships)}
           <GatsbyImage
             image={edge.node.relationships.field_image.localFile}
             alt="testpic alt text"
