@@ -9,6 +9,10 @@ const SecondPage = ({ data }) => (
     {data.allTaxonomyTermFootballGrounds.edges.map(edge => (
       <>
         <h3>{edge.node.name}</h3>
+        <p>{edge.node.field_address.value}</p>
+        <p>{edge.node.field_pitch_type}</p>
+        <p>{edge.node.field_travel_time} mins.</p>
+        <p>{edge.node.field_distance}km</p>
         <Link to="/">Go back to the homepage</Link>
       </>
     ))}
