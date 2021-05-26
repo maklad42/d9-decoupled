@@ -7,39 +7,23 @@ import Layout from "../components/layout"
 
 const IndexPage = ({ data }) => (
   <Layout>
-    {data.allNodeArticle.edges.map(edge => (
-      <>
-        <h3>
-          <Link to={edge.node.id}>{edge.node.title}</Link>
-        </h3>
-        <small>
-          <em>{Date(edge.node.created)}</em>
-        </small>
-        <div
-          style={{
-            maxWidth: `300px`,
-            marginBottom: `1.45rem`,
-            width: `100%`,
-          }}
-        >
-          {console.log(edge.node.relationships)}
-          <GatsbyImage
-            image={edge.node.relationships.field_image.localFile}
-            alt="testpic alt text"
-          />
-          {/* <StaticImage
-            src="http://dev.d9-sandbox.io/sites/default/files/2021-05/generateImage_vXQQFL.png"
-            alt="testpic"
-          /> */}
-        </div>
-        <div
-          dangerouslySetInnerHTML={{
-            __html:
-              edge.node.body.value.split(" ").splice(0, 50).join(" ") + "...",
-          }}
-        ></div>
-      </>
-    ))}
+    <ul>
+      <li>
+        <Link to={"/"}>Home</Link>
+      </li>
+      <li>
+        Nakanoshima FC
+        <ul>
+          <li>
+            <Link to={"/grounds"}>Grounds</Link>
+          </li>
+          <li>Team Mates</li>
+        </ul>
+      </li>
+      <li>
+        <Link to={"/page-2"}>Articles</Link>
+      </li>
+    </ul>
   </Layout>
 )
 

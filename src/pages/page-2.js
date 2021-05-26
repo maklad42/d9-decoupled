@@ -1,38 +1,72 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+// import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
 
-const SecondPage = ({ data }) => (
+const IndexPage = ({ data }) => (
   <Layout>
-    {data.allTaxonomyTermFootballGrounds.edges.map(edge => (
+    {data.allNodeArticle.edges.map(edge => (
       <>
-        <h3>{edge.node.name}</h3>
-        <p>{edge.node.field_address.value}</p>
-        <p>{edge.node.field_pitch_type}</p>
-        <p>{edge.node.field_travel_time} mins.</p>
-        <p>{edge.node.field_distance}km</p>
-        <Link to="/">Go back to the homepage</Link>
+        <h3>
+          <Link to={edge.node.id}>{edge.node.title}</Link>
+        </h3>
+        <small>
+          <em>{Date(edge.node.created)}</em>
+        </small>
+        <div
+          style={{
+            maxWidth: `300px`,
+            marginBottom: `1.45rem`,
+            width: `100%`,
+          }}
+        >
+          <GatsbyImage
+            image={edge.node.relationships.field_image.localFile}
+            alt="testpic alt text"
+          />
+          {/* <StaticImage
+            src="http://dev.d9-sandbox.io/sites/default/files/2021-05/generateImage_vXQQFL.png"
+            alt="testpic"
+          /> */}
+        </div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              edge.node.body.value.split(" ").splice(0, 50).join(" ") + "...",
+          }}
+        ></div>
       </>
     ))}
   </Layout>
 )
 
-export default SecondPage
+export default IndexPage
 
 export const query = graphql`
   query {
-    allTaxonomyTermFootballGrounds {
+    allNodeArticle {
       edges {
         node {
-          name
-          field_distance
-          field_google_map
-          field_pitch_type
-          field_travel_time
-          field_address {
+          title
+          id
+          body {
             value
+          }
+          created
+          relationships {
+            field_image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 200
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
+                }
+              }
+            }
           }
         }
       }
