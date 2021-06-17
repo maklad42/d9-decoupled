@@ -16,9 +16,9 @@ const SecondPage = ({ data }) => (
         <div className="">{edge.node.field_distance}km</div>
         <div className="gmap">
           <Map
-            google={props.google}
+            google={data.google}
             zoom={8}
-            style={mapStyles}
+            style={data.mapStyles}
             initialCenter={{ lat: 47.444, lng: -122.176 }}
           />
         </div>
