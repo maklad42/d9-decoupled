@@ -5,6 +5,11 @@ import { Map, GoogleApiWrapper } from "google-maps-react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+const mapStyles = {
+  width: "20%",
+  height: "20%",
+}
+
 const SecondPage = ({ data }) => (
   <Layout>
     {data.allTaxonomyTermFootballGrounds.edges.map(edge => (
@@ -17,8 +22,8 @@ const SecondPage = ({ data }) => (
         <div className="gmap">
           <Map
             google={data.google}
-            zoom={8}
-            style={data.mapStyles}
+            defaultZoom={8}
+            style={mapStyles}
             initialCenter={{ lat: 47.444, lng: -122.176 }}
           />
         </div>
