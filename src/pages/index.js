@@ -24,6 +24,9 @@ const IndexPage = ({ data }) => (
         <Link to={"/blog-posts"}>Bloggy McBlogface</Link>
       </li>
       <li>
+        <Link to={"/gtd"}>GTD Dashboard</Link>
+      </li>
+      <li>
         <Link to={"/page-2"}>Articles</Link>
       </li>
     </ul>
