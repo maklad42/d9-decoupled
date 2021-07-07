@@ -5,16 +5,16 @@ import Layout from "../components/layout"
 
 const Gtd = ({ data }) => (
   <Layout>
-    {data.allNodeTodo.group.map(grp => {
-      <>
-        <div className="todo">
-          {grp.node[0].relationships.field_project.name}
-        </div>
-        <div className="todo">{grp.node.title}</div>
-        <div className="todo">Start: {grp.node.field_start_date}</div>
-        <div className="todo">Due: {grp.node.field_due_date}</div>
-      </>
-    ))}
+    {data.allNodeTodo.group.map(edge => {
+      return edge.edges.map((todo, i) => (
+        <>
+          <h3>{todo.node.relationships.field_project.name}</h3>
+          <div>{todo.node.title}</div>
+          <div>{todo.node.field_start_date}</div>
+          <div>{todo.node.field_due_by}</div>
+        </>
+      ))
+    })}
   </Layout>
 )
 
