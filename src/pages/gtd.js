@@ -2,19 +2,18 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
+import Tasks from "../components/tasks"
 
 const Gtd = ({ data }) => (
   <Layout>
-    {data.allNodeTodo.group.map(edge => {
-      return edge.edges.map((todo, i) => (
-        <>
-          <h3>{todo.node.relationships.field_project.name}</h3>
-          <div>{todo.node.title}</div>
-          <div>{todo.node.field_start_date}</div>
-          <div>{todo.node.field_due_by}</div>
-        </>
-      ))
-    })}
+    {data.allNodeTodo.group.map(edge => (
+      <>
+        <h3>{edge.edges[0].node.relationships.field_project.name}</h3>
+        <div className="tasklist">
+          <Tasks tasks={edge} />
+        </div>
+      </>
+    ))}
   </Layout>
 )
 
