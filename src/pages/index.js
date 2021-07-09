@@ -4,6 +4,8 @@ import { Link, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
+// import "../styles/reset.css"
+import "../styles/d9-decoupled.css"
 
 const IndexPage = ({ data }) => (
   <Layout>

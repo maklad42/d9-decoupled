@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+/*  *******  */
+/* GTD Tasks */
+/*  *******  */
+
+.tasklist {
+  margin-bottom: 2rem;
+}
+
+.task-wrapper {
+  margin-bottom: 1rem;
+}
