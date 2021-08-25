@@ -28,6 +28,8 @@ export const query = graphql`
             title
             field_start_date
             field_due_by
+            field_done
+            field_sub_project
             relationships {
               field_project {
                 field_project_active
