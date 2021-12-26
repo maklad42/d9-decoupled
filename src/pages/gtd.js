@@ -21,7 +21,12 @@ export default Gtd
 
 export const query = graphql`
   query {
-    allNodeTodo(sort: { fields: [field_due_by], order: ASC }) {
+    allNodeTodo(
+      sort: {
+        fields: [field_sub_project, field_due_by, field_start_date]
+        order: [ASC, ASC, ASC]
+      }
+    ) {
       group(field: relationships___field_project___name) {
         edges {
           node {
