@@ -13,3 +13,8 @@
 .task-wrapper {
   margin-bottom: 1rem;
 }
+
+.schedule {
+  width: 15px;
+  background-color: rgba(197, 206, 214, 0.4);
+}
