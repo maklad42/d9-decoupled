@@ -1,7 +1,7 @@
 import React from "react"
 
-const Days = key => {
-  console.log(key)
-  return <td className="schedule" data-day={key}></td>
+const Days = ({ idx }) => {
+  // console.log(idx)
+  return <td className="schedule" data-day={idx}></td>
 }
 export default Days

@@ -14,7 +14,22 @@
   margin-bottom: 1rem;
 }
 
-.schedule {
-  width: 15px;
+table.project {
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
+table.project th.task-title.schedule {
+  padding: 0.8rem 0;
+  font-size: 0.6rem;
+}
+
+table.project td.task {
+  padding: 5px 0;
+}
+
+table.project td.schedule {
+  width: 10px;
+  padding: 0;
   background-color: rgba(197, 206, 214, 0.4);
 }
