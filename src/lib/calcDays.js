@@ -1,5 +1,6 @@
 export default function calcDays(date, offset) {
-  const fulldate = new Date("2022/02/28")
+  const fulldate = new Date(date)
+  fulldate.setDate(fulldate.getDate() + offset)
   let today = "" + (fulldate.getMonth() + 1) + "/" + fulldate.getDate()
-  console.log(today)
+  return today
 }
