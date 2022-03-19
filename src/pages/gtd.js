@@ -3,9 +3,13 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Tasks from "../components/tasks"
+import TaskFilter from "../components/TaskFilter"
+
+const dateNow = new Date()
 
 const Gtd = ({ data }) => (
   <Layout>
+    <TaskFilter startDate={dateNow} />
     {data.allNodeTodo.group.map(edge => (
       <>
         <h3>{edge.edges[0].node.relationships.field_project.name}</h3>
