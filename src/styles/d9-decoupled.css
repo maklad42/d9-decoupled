@@ -33,3 +33,7 @@ table.project td.schedule {
   padding: 0;
   background-color: rgba(197, 206, 214, 0.4);
 }
+
+table.project td.schedule.weekend {
+  background-color: rgba(241, 129, 109, 0.87);
+}

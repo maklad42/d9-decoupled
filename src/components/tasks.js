@@ -2,7 +2,7 @@ import React from "react"
 import Days from "./days"
 import calcDays from "../lib/calcDays"
 
-const Tasks = ({ tasks }) => (
+const Tasks = ({ tasks, date }) => (
   <>
     <table className="project todolist">
       <thead>
@@ -13,43 +13,43 @@ const Tasks = ({ tasks }) => (
           <th className="task-title">Due</th>
           <th className="task-title">Done</th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 0)}
+            {calcDays(date, 0)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 7)}
+            {calcDays(date, 7)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 14)}
+            {calcDays(date, 14)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 21)}
+            {calcDays(date, 21)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 28)}
+            {calcDays(date, 28)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 35)}
+            {calcDays(date, 35)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 42)}
+            {calcDays(date, 42)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 49)}
+            {calcDays(date, 49)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 56)}
+            {calcDays(date, 56)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 63)}
+            {calcDays(date, 63)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 70)}
+            {calcDays(date, 70)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 77)}
+            {calcDays(date, 77)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays("2022/02/28", 85)}
+            {calcDays(date, 85)}
           </th>
         </tr>
       </thead>
@@ -63,7 +63,7 @@ const Tasks = ({ tasks }) => (
               <td className="task due">{task.node.field_due_by}</td>
               <td className="task due">{task.node.field_done}</td>
               {[...Array(90)].map((v, i) => (
-                <Days idx={i} date="2022/02/28" />
+                <Days idx={i} date="2022/03/20" />
               ))}
             </tr>
           </>
