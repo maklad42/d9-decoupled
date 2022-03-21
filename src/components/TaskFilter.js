@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import styled from "styled-components"
@@ -19,41 +19,50 @@ const FilterStyles = styled.div`
   }
 `
 
-const TaskFilter = ({ startDate, endDate, changeDate }) => {
-  // const startDt = new Date()
-  // startDt.setDate(startDt.getDate() - 14)
-  // const endDt = startDt.setDate(startDt.getDate() + 90)
+const TaskFilter = ({ startDate, endDate, setStartDate, setEndDate }) => {
+  function updateStartDate(date) {
+    const newStartDate = date.setDate(date.getDate())
+    const newEndDate = date.setDate(date.getDate() + 90)
+    setStartDate(newStartDate)
+    setEndDate(newEndDate)
+  }
 
-  // const [todayDate, setTodayDate] = useState(new Date())
-  // const [startDate, setStartDate] = useState(startDt)
-  // const [dueDate, setDueDate] = useState(endDt)
+  function updateEndDate(date) {
+    const newEndDate = date.setDate(date.getDate())
+    const newStartDate = date.setDate(date.getDate() - 90)
+    setStartDate(newStartDate)
+    setEndDate(newEndDate)
+  }
+
   return (
     <>
       <FilterStyles>
         <div className="filterblocks">
           <div>
-            <p>Today:</p>
-            {/* <ReactDatePicker
-              selected={todayDate}
-              onChange={date => setTodayDate(date)}
-              monthsShown={2}
-            /> */}
-          </div>
-          <div>
-            <p>Start Date:</p>
+            <p>Calendar Start:</p>
             <ReactDatePicker
               selected={startDate}
-              onChange={date => changeDate(date)}
+              onChange={date => updateStartDate(date)}
+              monthsShown={2}
+            />
+            <p>Calendar End:</p>
+            <ReactDatePicker
+              selected={endDate}
+              onChange={date => updateEndDate(date)}
               monthsShown={2}
             />
           </div>
           <div>
-            <p>Due Date:</p>
-            <ReactDatePicker
-              selected={endDate}
-              onChange={date => setDueDate(date)}
-              monthsShown={2}
-            />
+            <p>Filters:</p>
+            Filter 1:
+            <br />
+            Filter 2:
+          </div>
+          <div>
+            <p>Buttons:</p>
+            Find:
+            <br />
+            Other stuff:
           </div>
         </div>
       </FilterStyles>

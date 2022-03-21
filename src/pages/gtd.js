@@ -22,30 +22,43 @@ import TaskFilter from "../components/TaskFilter"
 
 // const dateNow = new Date()
 
-const startDt = new Date()
-startDt.setDate(startDt.getDate() - 14)
-const endDt = startDt.setDate(startDt.getDate() + 90)
+export default function Gtd({ data }) {
+  let startDt = new Date()
+  let endDt = new Date()
+  startDt.setDate(startDt.getDate() - 14)
+  endDt.setDate(endDt.getDate() + 90)
 
-// const [todayDate, setTodayDate] = useState(new Date())
-const [startDate, setStartDate] = useState(startDt)
-const [endDate, setEndDate] = useState(endDt)
+  // const [todayDate, setTodayDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(startDt)
+  const [endDate, setEndDate] = useState(endDt)
 
-const Gtd = ({ data }) => (
-  <Layout>
-    <h2>GTD Dashboard : Projects and Tasks</h2>
-    <TaskFilter startDate={startDate} endDate={endDate} />
-    {data.allNodeTodo.group.map(edge => (
-      <>
-        <h3>{edge.edges[0].node.relationships.field_project.name}</h3>
-        <div className="tasklist">
-          <Tasks tasks={edge} date={startDate} changeDate={setStartDate} />
-        </div>
-      </>
-    ))}
-  </Layout>
-)
+  return (
+    <Layout>
+      <h2>GTD Dashboard : Projects and Tasks</h2>
+      <TaskFilter
+        startDate={startDate}
+        endDate={endDate}
+        setStartDate={setStartDate}
+        setEndDate={setEndDate}
+      />
+      {data.allNodeTodo.group.map(edge => (
+        <>
+          <h3>{edge.edges[0].node.relationships.field_project.name}</h3>
+          <div className="tasklist">
+            <Tasks
+              tasks={edge}
+              calStartDate={startDate}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+            />
+          </div>
+        </>
+      ))}
+    </Layout>
+  )
+}
 
-export default Gtd
+// export default Gtd
 
 export const query = graphql`
   query {

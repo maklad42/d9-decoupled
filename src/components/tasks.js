@@ -1,8 +1,8 @@
 import React from "react"
 import Days from "./days"
-import calcDays from "../lib/calcDays"
+import calcDays from "../lib/calcDates"
 
-const Tasks = ({ tasks, date }) => (
+const Tasks = ({ tasks, calStartDate }) => (
   <>
     <table className="project todolist">
       <thead>
@@ -13,57 +13,61 @@ const Tasks = ({ tasks, date }) => (
           <th className="task-title">Due</th>
           <th className="task-title">Done</th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 0)}
+            {calcDays(calStartDate, 0)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 7)}
+            {calcDays(calStartDate, 7)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 14)}
+            {calcDays(calStartDate, 14)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 21)}
+            {calcDays(calStartDate, 21)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 28)}
+            {calcDays(calStartDate, 28)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 35)}
+            {calcDays(calStartDate, 35)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 42)}
+            {calcDays(calStartDate, 42)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 49)}
+            {calcDays(calStartDate, 49)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 56)}
+            {calcDays(calStartDate, 56)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 63)}
+            {calcDays(calStartDate, 63)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 70)}
+            {calcDays(calStartDate, 70)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 77)}
+            {calcDays(calStartDate, 77)}
           </th>
           <th className="task-title schedule" colSpan={7}>
-            {calcDays(date, 85)}
+            {calcDays(calStartDate, 85)}
           </th>
         </tr>
       </thead>
       <tbody>
-        {tasks.edges.map(task => (
+        {tasks.edges.map((task, i) => (
           <>
-            <tr className="task-wrapper">
+            <tr key={i} className="task-wrapper">
               <td className="task title">{task.node.title}</td>
               <td className="task due">{task.node.field_sub_project}</td>
               <td className="task start">{task.node.field_start_date}</td>
               <td className="task due">{task.node.field_due_by}</td>
               <td className="task due">{task.node.field_done}</td>
               {[...Array(90)].map((v, i) => (
-                <Days idx={i} date="2022/03/20" />
+                <Days
+                  idx={i}
+                  date={calStartDate}
+                  taskStart={task.node.field_start_date}
+                />
               ))}
             </tr>
           </>
