@@ -1,10 +1,39 @@
 import React from "react"
 import Days from "./days"
 import calcDays from "../lib/calcDates"
+import styled from "styled-components"
+
+const TaskTable = styled.table`
+  font-size: 0.8rem;
+  line-height: 1rem;
+
+  td.schedule.tStart {
+    background-color: green;
+  }
+
+  th.task-title.schedule {
+    padding: 0.8rem 0;
+    font-size: 0.6rem;
+  }
+
+  td.task {
+    padding: 5px 0;
+  }
+
+  td.schedule {
+    width: 10px;
+    padding: 0;
+    background-color: rgba(197, 206, 214, 0.4);
+  }
+
+  td.schedule.weekend {
+    background-color: rgba(241, 129, 109, 0.87);
+  }
+`
 
 const Tasks = ({ tasks, calStartDate }) => (
   <>
-    <table className="project todolist">
+    <TaskTable className="project todolist">
       <thead>
         <tr>
           <th className="task-title">Task</th>
@@ -73,7 +102,7 @@ const Tasks = ({ tasks, calStartDate }) => (
           </>
         ))}
       </tbody>
-    </table>
+    </TaskTable>
   </>
 )
 
