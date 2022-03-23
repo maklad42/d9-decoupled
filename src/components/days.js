@@ -1,7 +1,7 @@
 import React from "react"
 import formatDate from "../lib/formatDate"
 
-const Days = ({ idx, date, taskStart }) => {
+const Days = ({ idx, date, taskStart, taskDue }) => {
   console.log(date)
 
   // get day of week from date
@@ -20,15 +20,24 @@ const Days = ({ idx, date, taskStart }) => {
   d3 = formatDate(d3)
 
   // check if this is the task start date
+  let active = false
   let tStart = taskStart === d3
+  let tDue = taskDue === d3
   if (tStart) {
-    console.log({ tStart, taskStart, d3 })
+    console.log(tStart.getTime())
+    console.log(d3.getTime())
   }
 
   return (
     <td
       className={
-        weekend ? "schedule weekend" : tStart ? "tStart schedule" : "schedule"
+        weekend
+          ? "schedule weekend"
+          : tStart
+          ? "tStart schedule"
+          : tDue
+          ? "tDue schedule"
+          : "schedule"
       }
       data-day={idx}
       data-date={d3}

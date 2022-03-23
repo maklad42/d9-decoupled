@@ -29,6 +29,10 @@ const TaskTable = styled.table`
   td.schedule.weekend {
     background-color: rgba(241, 129, 109, 0.87);
   }
+
+  td.schedule.tDue {
+    background-color: blue;
+  }
 `
 
 const Tasks = ({ tasks, calStartDate }) => (
@@ -96,6 +100,7 @@ const Tasks = ({ tasks, calStartDate }) => (
                   idx={i}
                   date={calStartDate}
                   taskStart={task.node.field_start_date}
+                  taskDue={task.node.field_due_by}
                 />
               ))}
             </tr>
