@@ -7,10 +7,6 @@ const TaskTable = styled.table`
   font-size: 0.8rem;
   line-height: 1rem;
 
-  td.schedule.tStart {
-    background-color: green;
-  }
-
   th.task-title.schedule {
     padding: 0.8rem 0;
     font-size: 0.6rem;
@@ -23,15 +19,23 @@ const TaskTable = styled.table`
   td.schedule {
     width: 10px;
     padding: 0;
-    background-color: rgba(197, 206, 214, 0.4);
+    background-color: rgba(219, 223, 227, 0.4);
+  }
+
+  td.schedule.active {
+    background-color: rgba(236, 229, 191, 0.5);
   }
 
   td.schedule.weekend {
-    background-color: rgba(241, 129, 109, 0.87);
+    background-color: rgba(215, 224, 230, 0.87);
+  }
+
+  td.schedule.tStart {
+    background-color: #97bf97d6;
   }
 
   td.schedule.tDue {
-    background-color: blue;
+    background-color: #e8afc4bd;
   }
 `
 
