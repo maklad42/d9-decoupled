@@ -7,6 +7,11 @@ const TaskTable = styled.table`
   font-size: 0.8rem;
   line-height: 1rem;
 
+  tr.task-wrapper.done {
+    color: #c1c2c4;
+    text-decoration: line-through;
+  }
+
   th.task-title.schedule {
     padding: 0.8rem 0;
     font-size: 0.6rem;
@@ -93,12 +98,21 @@ const Tasks = ({ tasks, calStartDate }) => (
       <tbody>
         {tasks.edges.map((task, i) => (
           <>
-            <tr key={i} className="task-wrapper">
+            <tr
+              key={i}
+              className={
+                task.node.field_done == true
+                  ? "task-wrapper done"
+                  : "task-wrapper"
+              }
+            >
               <td className="task title">{task.node.title}</td>
-              <td className="task due">{task.node.field_sub_project}</td>
+              <td className="task subp">{task.node.field_sub_project}</td>
               <td className="task start">{task.node.field_start_date}</td>
               <td className="task due">{task.node.field_due_by}</td>
-              <td className="task due">{task.node.field_done}</td>
+              <td className="task done">
+                {task.node.field_done == true ? "Done" : ""}
+              </td>
               {[...Array(90)].map((v, i) => (
                 <Days
                   idx={i}
