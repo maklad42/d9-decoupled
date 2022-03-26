@@ -23,6 +23,10 @@ const Days = ({ idx, date, taskStart, taskDue }) => {
   let active = false
   let tStart = taskStart === d4
   let tDue = taskDue === d4
+  let firstofmonth = false
+  if (d3.getDate() === 1) {
+    firstofmonth = true
+  }
   // if (tStart) {
   // console.log(new Date(taskStart).getTime())
   // console.log(new Date(date).getTime())
@@ -35,23 +39,24 @@ const Days = ({ idx, date, taskStart, taskDue }) => {
     active = true
   }
 
-  return (
-    <td
-      className={
-        weekend
-          ? "schedule weekend"
-          : tStart
-          ? "tStart schedule"
-          : tDue
-          ? "tDue schedule"
-          : active
-          ? "active schedule"
-          : "schedule"
-      }
-      data-day={idx}
-      data-date={d4}
-    ></td>
-  )
+  let classList = ["schedule"]
+  if (weekend) {
+    classList.push("weekend")
+  }
+  if (tStart) {
+    classList.push("tStart")
+  }
+  if (tDue) {
+    classList.push("tDue")
+  }
+  if (active) {
+    classList.push("active")
+  }
+  if (firstofmonth) {
+    classList.push("firstofmonth")
+  }
+
+  return <td className={classList.join(" ")} data-day={idx} data-date={d4}></td>
 }
 
 export default Days

@@ -63,6 +63,7 @@ export default function Gtd({ data }) {
 export const query = graphql`
   query {
     allNodeTodo(
+      filter: { field_done: { ne: true } }
       sort: {
         fields: [field_sub_project, field_due_by, field_start_date]
         order: [ASC, ASC, ASC]

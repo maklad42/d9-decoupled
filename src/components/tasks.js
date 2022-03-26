@@ -42,6 +42,10 @@ const TaskTable = styled.table`
   td.schedule.tDue {
     background-color: #e8afc4bd;
   }
+
+  td.schedule.firstofmonth {
+    border-left: solid 1px black;
+  }
 `
 
 const Tasks = ({ tasks, calStartDate }) => (
