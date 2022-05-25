@@ -101,32 +101,31 @@ const Tasks = ({ tasks, calStartDate }) => (
       </thead>
       <tbody>
         {tasks.edges.map((task, i) => (
-          <>
-            <tr
-              key={i}
-              className={
-                task.node.field_done == true
-                  ? "task-wrapper done"
-                  : "task-wrapper"
-              }
-            >
-              <td className="task title">{task.node.title}</td>
-              <td className="task subp">{task.node.field_sub_project}</td>
-              <td className="task start">{task.node.field_start_date}</td>
-              <td className="task due">{task.node.field_due_by}</td>
-              <td className="task done">
-                {task.node.field_done == true ? "Done" : ""}
-              </td>
-              {[...Array(90)].map((v, i) => (
-                <Days
-                  idx={i}
-                  date={calStartDate}
-                  taskStart={task.node.field_start_date}
-                  taskDue={task.node.field_due_by}
-                />
-              ))}
-            </tr>
-          </>
+          <tr
+            key={i}
+            className={
+              task.node.field_done === true
+                ? "task-wrapper done"
+                : "task-wrapper"
+            }
+          >
+            <td className="task title">{task.node.title}</td>
+            <td className="task subp">{task.node.field_sub_project}</td>
+            <td className="task start">{task.node.field_start_date}</td>
+            <td className="task due">{task.node.field_due_by}</td>
+            <td className="task done">
+              {task.node.field_done === true ? "Done" : ""}
+            </td>
+            {[...Array(90)].map((v, i) => (
+              <Days
+                key={i}
+                idx={i}
+                date={calStartDate}
+                taskStart={task.node.field_start_date}
+                taskDue={task.node.field_due_by}
+              />
+            ))}
+          </tr>
         ))}
       </tbody>
     </TaskTable>

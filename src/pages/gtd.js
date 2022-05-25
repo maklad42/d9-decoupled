@@ -41,8 +41,8 @@ export default function Gtd({ data }) {
         setStartDate={setStartDate}
         setEndDate={setEndDate}
       />
-      {data.allNodeTodo.group.map(edge => (
-        <>
+      {data.allNodeTodo.group.map((edge, i) => (
+        <div className="projectwrapper" key={i}>
           <h3>{edge.edges[0].node.relationships.field_project.name}</h3>
           <div className="tasklist">
             <Tasks
@@ -52,7 +52,7 @@ export default function Gtd({ data }) {
               setEndDate={setEndDate}
             />
           </div>
-        </>
+        </div>
       ))}
     </Layout>
   )
@@ -72,6 +72,7 @@ export const query = graphql`
       group(field: relationships___field_project___name) {
         edges {
           node {
+            id
             title
             field_start_date
             field_due_by
