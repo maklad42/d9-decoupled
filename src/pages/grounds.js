@@ -1,18 +1,13 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
-// import { Map, GoogleApiWrapper } from "google-maps-react"
 
 import Layout from "../components/layout"
-
-// const mapStyles = {
-//   width: "20%",
-//   height: "20%",
-// }
 
 const Grounds = styled.div`
   h3 {
     color: rebeccapurple;
+    text-align: center;
   }
 
   display: grid;
@@ -21,8 +16,9 @@ const Grounds = styled.div`
   width: 90%;
 
   div.ground {
-    background-color: #f4f4f4;
+    background-color: #f8f8f8;
     padding: 10px;
+    box-shadow: 2px 2px 2px #ddd;
   }
 
   div.ground-details {
@@ -34,7 +30,7 @@ const Grounds = styled.div`
   }
 
   div.ground-details div {
-    background-color: #fafafa;
+    background-color: #fcfcfc;
     margin: 5px;
     padding: 5px;
   }
@@ -51,7 +47,16 @@ const Grounds = styled.div`
   div.ground.distance {
   }
 
-  div.ground.gmap {
+  div.gmap {
+    display: relative;
+    width: 90%;
+    margin: auto;
+    margin-top: 2rem;
+    height: 300px;
+  }
+
+  div.gmap iframe {
+    border: 1px solid grey;
   }
 `
 
@@ -68,12 +73,10 @@ const GroundsList = ({ data }) => (
             <div className="distance">{edge.node.field_distance}km</div>
           </div>
           <div className="gmap">
-            {/* <Map
-            google={data.google}
-            defaultZoom={8}
-            style={mapStyles}
-            initialCenter={{ lat: 47.444, lng: -122.176 }}
-          /> */}
+            <iframe
+              title={edge.node.name}
+              src="https://maps.google.com/maps?hl=en&amp;q=Kanagawa%2C+Kawasaki%2C+Tama+Ward%2C+Nakanoshima%2C+3+Chome%E2%88%9212%E2%88%921&amp;t=m&amp;z=14&amp;output=embed"
+            ></iframe>
           </div>
         </div>
       ))}
