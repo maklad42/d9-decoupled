@@ -8,6 +8,7 @@ const Grounds = styled.div`
   h3 {
     color: rebeccapurple;
     text-align: center;
+    height: 3rem;
   }
 
   display: grid;
@@ -21,6 +22,16 @@ const Grounds = styled.div`
     box-shadow: 2px 2px 2px #ddd;
   }
 
+  div.ground div.label {
+    font-size: 0.8rem;
+  }
+
+  div.ground div.content {
+    margin-bottom: 1rem;
+    background-color: #fdfdfd;
+    padding: 5px;
+  }
+
   div.ground-details {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -31,11 +42,10 @@ const Grounds = styled.div`
 
   div.ground-details div {
     background-color: #fcfcfc;
-    margin: 5px;
-    padding: 5px;
   }
 
-  div.ground.address {
+  div.ground .address {
+    height: 4rem;
   }
 
   div.ground.pitch {
@@ -48,15 +58,16 @@ const Grounds = styled.div`
   }
 
   div.gmap {
-    display: relative;
+    position: relative;
     width: 90%;
     margin: auto;
-    margin-top: 2rem;
-    height: 300px;
   }
 
   div.gmap iframe {
     border: 1px solid grey;
+    height: 300px;
+    width: 100%;
+    aspect-ratio: 1;
   }
 `
 
@@ -66,13 +77,18 @@ const GroundsList = ({ data }) => (
       {data.allTaxonomyTermFootballGrounds.edges.map((edge, i) => (
         <div key={i} className="ground">
           <h3>{edge.node.name}</h3>
-          <div className="address">{edge.node.field_address.value}</div>
+          <div class="label">Address:</div>
+          <div className="content address">{edge.node.field_address.value}</div>
+          <div class="label">Details:</div>
           <div className="ground-details">
-            <div className="pitch">{edge.node.field_pitch_type}</div>
-            <div className="travel">{edge.node.field_travel_time} mins.</div>
-            <div className="distance">{edge.node.field_distance}km</div>
+            <div className="content pitch">{edge.node.field_pitch_type}</div>
+            <div className="content travel">
+              {edge.node.field_travel_time} mins.
+            </div>
+            <div className="content distance">{edge.node.field_distance}km</div>
           </div>
-          <div className="gmap">
+          <div class="label">Map:</div>
+          <div className="content gmap">
             <iframe
               title={edge.node.name}
               src="https://maps.google.com/maps?hl=en&amp;q=Kanagawa%2C+Kawasaki%2C+Tama+Ward%2C+Nakanoshima%2C+3+Chome%E2%88%9212%E2%88%921&amp;t=m&amp;z=14&amp;output=embed"
