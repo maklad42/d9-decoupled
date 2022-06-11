@@ -19,7 +19,9 @@ const IndexPage = ({ data }) => (
           <li>
             <Link to={"/grounds"}>Grounds</Link>
           </li>
-          <li>Team Mates</li>
+          <li>
+            <Link to={"teammates"}>Team Mates</Link>
+          </li>
         </ul>
       </li>
       <li>
