@@ -117,7 +117,7 @@ export const query = graphql`
           field_pitch_type
           field_travel_time
           field_address {
-            value
+            processed
           }
         }
       }

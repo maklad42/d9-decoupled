@@ -20,7 +20,7 @@ const IndexPage = ({ data }) => (
             <Link to={"/grounds"}>Grounds</Link>
           </li>
           <li>
-            <Link to={"teammates"}>Team Mates</Link>
+            <Link to={"/teammates"}>Team Mates</Link>
           </li>
         </ul>
       </li>
@@ -38,33 +38,3 @@ const IndexPage = ({ data }) => (
 )
 
 export default IndexPage
-
-export const query = graphql`
-  query {
-    allNodeArticle {
-      edges {
-        node {
-          title
-          id
-          body {
-            value
-          }
-          created
-          relationships {
-            field_image {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    width: 200
-                    placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
-                  )
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
